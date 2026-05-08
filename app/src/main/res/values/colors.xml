@@ -2,4 +2,17 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="primary">#0061FF</color>
+    <color name="primary_dark">#0047B3</color>
+    <color name="color_accent">#FF9900</color>
+    <color name="bg_light">#F5F7FA</color>
+    <color name="text_main">#2C3E50</color>
+    <color name="text_sub">#7F8C8D</color>
+    <color name="card_bg">#FFFFFF</color>
+    <color name="checkbox_checked">#0061FF</color>
+    <color name="checkbox_unchecked">#BDC3C7</color>
+    <color name="gray_light">#E0E0E0</color>
+    <color name="gray_transparent">#33000000</color>
+    <color name="color_delete">#5C4033</color>
+    <color name="dialog_bg">#E8E8E8</color>
 </resources>

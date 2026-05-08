@@ -1,19 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_light"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="48dp" /> <!-- Space for the bottom handle -->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Bottom Sheet for Calendar / Statistics -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/bottomSheetCalendar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_bottom_sheet"
+        android:elevation="8dp"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="60dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="24dp">
+
+            <!-- Handle Indicator -->
+            <View
+                android:id="@+id/handle"
+                android:layout_width="40dp"
+                android:layout_height="4dp"
+                android:layout_marginTop="12dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/bg_rounded_gray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="위로 스와이프하여 캘린더 보기"
+                android:textSize="12sp"
+                android:textColor="@color/text_sub"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="4dp" />
+
+            <!-- Integrated Calendar & Month Navigation -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/card_bg">
+
+                <CalendarView
+                    android:id="@+id/calendarView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <!-- Custom Header Overlay (covers standard CalendarView title/arrows) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_gravity="top"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@color/card_bg"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:id="@+id/btnPrevMonth"
+                        android:layout_width="56dp"
+                        android:layout_height="match_parent"
+                        android:text="&lt;"
+                        android:textSize="22sp"
+                        android:textColor="@color/text_main"
+                        android:gravity="center"
+                        android:background="?attr/selectableItemBackgroundBorderless" />
+
+                    <TextView
+                        android:id="@+id/tvCurrentMonth"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="5월"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_main"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:id="@+id/btnNextMonth"
+                        android:layout_width="56dp"
+                        android:layout_height="match_parent"
+                        android:text="&gt;"
+                        android:textSize="22sp"
+                        android:textColor="@color/text_main"
+                        android:gravity="center"
+                        android:background="?attr/selectableItemBackgroundBorderless" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <!-- Statistics Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#E0E0E0">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="24dp">
+
+                    <!-- Title -->
+                    <TextView
+                        android:id="@+id/tvStatsTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="이 달의 평균 달성률"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_main"
+                        android:layout_marginBottom="24dp" />
+
+                    <!-- Circular Progress -->
+                    <FrameLayout
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
+                        android:layout_gravity="center">
+
+                        <kr.ac.kopo.todayroutine.CircularProgressView
+                            android:id="@+id/circularProgress"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:id="@+id/tvOverallRate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="87%"
+                            android:textSize="36sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_main" />
+                    </FrameLayout>
+
+                    <!-- Best Category -->
+                    <TextView
+                        android:id="@+id/tvBestCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="가장 열심히 한 카테고리: 건강"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#D32F2F"
+                        android:gravity="center" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Category Ranking List -->
+            <LinearLayout
+                android:id="@+id/layoutCategoryRanking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="16dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
