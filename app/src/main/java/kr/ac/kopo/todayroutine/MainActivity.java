@@ -217,7 +217,9 @@ public class MainActivity extends AppCompatActivity {
             tvName.setText(catName);
             tvName.setTextSize(15);
             tvName.setTextColor(Color.parseColor("#2C3E50"));
-            tvName.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
+            LinearLayout.LayoutParams tvNameParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            tvNameParams.rightMargin = 20;
+            tvName.setLayoutParams(tvNameParams);
 
             TextView tvRate = new TextView(this);
             tvRate.setText(catRate + "%");
@@ -283,7 +285,9 @@ public class MainActivity extends AppCompatActivity {
             tvName.setText(routineName);
             tvName.setTextSize(14);
             tvName.setTextColor(Color.parseColor("#2C3E50"));
-            tvName.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
+            LinearLayout.LayoutParams tvNameParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            tvNameParams.rightMargin = 20;
+            tvName.setLayoutParams(tvNameParams);
 
             TextView tvRate = new TextView(this);
             tvRate.setText(routineRate + "%");
