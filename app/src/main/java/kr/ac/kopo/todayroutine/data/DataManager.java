@@ -276,8 +276,9 @@ public class DataManager {
         java.util.Map<Integer, Integer> catCountMap = new java.util.HashMap<>();
 
         for (Routine r : routineList) {
-            // Simplified: All dummy routines are 100% successful for monthly demo
-            int rate = 100;
+            // Seeded rate: produces varied but consistent values per routine per month
+            int seed = ((r.getId() * 31) + (year * 17) + (month * 53)) % 61;
+            int rate = 40 + seed; // Range: 40~100
 
             stats.getRoutineRates().put(r.getId(), rate);
             totalRate += rate;
@@ -288,9 +289,9 @@ public class DataManager {
             catCountMap.put(catId, catCountMap.getOrDefault(catId, 0) + 1);
         }
 
-        // Overall average set to 100 to fill the gauge
+        // Overall average
         if (routineCount > 0) {
-            stats.setOverallRate(100);
+            stats.setOverallRate(totalRate / routineCount);
         }
 
         // Category averages and find best

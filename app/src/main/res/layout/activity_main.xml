@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="24dp">
+            android:paddingBottom="80dp">
 
             <!-- Handle Indicator -->
             <View
@@ -119,7 +119,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:gravity="center"
-                    android:padding="24dp">
+                    android:padding="16dp">
 
                     <!-- Title -->
                     <TextView
@@ -130,12 +130,12 @@
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textColor="@color/text_main"
-                        android:layout_marginBottom="24dp" />
+                        android:layout_marginBottom="12dp" />
 
                     <!-- Circular Progress -->
                     <FrameLayout
-                        android:layout_width="180dp"
-                        android:layout_height="180dp"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
                         android:layout_gravity="center">
 
                         <ProgressBar
@@ -153,7 +153,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="87%"
-                            android:textSize="36sp"
+                            android:textSize="26sp"
                             android:textStyle="bold"
                             android:textColor="@color/text_main" />
                     </FrameLayout>

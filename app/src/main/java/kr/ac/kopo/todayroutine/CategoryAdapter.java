@@ -113,6 +113,16 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         }
 
         public void bind(Category category, List<Routine> categoryRoutines, int position) {
+            // First item: no negative margin (prevent overlap with hint text above)
+            // Other items: keep -16dp for the overlapping tab design
+            ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) itemView.getLayoutParams();
+            if (position == 0) {
+                lp.topMargin = 0;
+            } else {
+                lp.topMargin = (int) (-16 * itemView.getResources().getDisplayMetrics().density);
+            }
+            itemView.setLayoutParams(lp);
+
             tvTab.setText(category.getName());
             tvCount.setText("총 " + categoryRoutines.size() + "개");
 
