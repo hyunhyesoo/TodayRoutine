@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/dialog_bg"
+    android:padding="24dp">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvDialogTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="카테고리 수정"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Category Name -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="32dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="카테고리 이름"
+            android:textSize="14sp"
+            android:textColor="@color/text_main"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/etCategoryName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edittext"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:hint="카테고리 이름을 입력하세요"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <!-- Bottom Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="24dp">
+
+        <TextView
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="취소"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_main"
+            android:background="@drawable/bg_rounded_gray"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="12dp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="삭제"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_main"
+            android:background="@drawable/bg_rounded_primary"
+            android:backgroundTint="@color/color_delete"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="12dp"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="저장"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_main"
+            android:background="@drawable/bg_rounded_primary"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="12dp" />
+    </LinearLayout>
+
+</LinearLayout>

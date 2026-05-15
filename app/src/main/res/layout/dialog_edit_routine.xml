@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/dialog_bg"
+        android:padding="24dp">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tvDialogTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="루틴 수정"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Routine Name -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="루틴 이름"
+                android:textSize="14sp"
+                android:textColor="@color/text_main"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/etRoutineName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edittext"
+                android:padding="12dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:hint="루틴 이름을 입력하세요"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <!-- Routine Detail -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="상세 목표 및 가이드"
+                android:textSize="14sp"
+                android:textColor="@color/text_main"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/etRoutineDetail"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="@drawable/bg_edittext"
+                android:padding="12dp"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:hint="상세 내용을 입력하세요"
+                android:gravity="top" />
+        </LinearLayout>
+
+        <!-- Days of Week -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="32dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="반복 요일"
+                android:textSize="14sp"
+                android:textColor="@color/text_main"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:id="@+id/layoutDaysSelect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView android:id="@+id/daySelectMon" android:layout_width="36dp" android:layout_height="36dp" android:text="월" android:gravity="center" android:textSize="14sp" android:background="@drawable/bg_circle_day_inactive" android:textColor="@color/text_sub" android:layout_marginEnd="8dp"/>
+                <TextView android:id="@+id/daySelectTue" android:layout_width="36dp" android:layout_height="36dp" android:text="화" android:gravity="center" android:textSize="14sp" android:background="@drawable/bg_circle_day_inactive" android:textColor="@color/text_sub" android:layout_marginEnd="8dp"/>
+                <TextView android:id="@+id/daySelectWed" android:layout_width="36dp" android:layout_height="36dp" android:text="수" android:gravity="center" android:textSize="14sp" android:background="@drawable/bg_circle_day_inactive" android:textColor="@color/text_sub" android:layout_marginEnd="8dp"/>
+                <TextView android:id="@+id/daySelectThu" android:layout_width="36dp" android:layout_height="36dp" android:text="목" android:gravity="center" android:textSize="14sp" android:background="@drawable/bg_circle_day_inactive" android:textColor="@color/text_sub" android:layout_marginEnd="8dp"/>
+                <TextView android:id="@+id/daySelectFri" android:layout_width="36dp" android:layout_height="36dp" android:text="금" android:gravity="center" android:textSize="14sp" android:background="@drawable/bg_circle_day_inactive" android:textColor="@color/text_sub" android:layout_marginEnd="8dp"/>
+                <TextView android:id="@+id/daySelectSat" android:layout_width="36dp" android:layout_height="36dp" android:text="토" android:gravity="center" android:textSize="14sp" android:background="@drawable/bg_circle_day_inactive" android:textColor="@color/text_sub" android:layout_marginEnd="8dp"/>
+                <TextView android:id="@+id/daySelectSun" android:layout_width="36dp" android:layout_height="36dp" android:text="일" android:gravity="center" android:textSize="14sp" android:background="@drawable/bg_circle_day_inactive" android:textColor="@color/text_sub" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Category Selection -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="카테고리"
+                android:textSize="14sp"
+                android:textColor="@color/text_main"
+                android:layout_marginBottom="8dp" />
+
+            <RadioGroup
+                android:id="@+id/rgCategories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/tvAddNewCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+ 새 카테고리 추가"
+                android:textSize="14sp"
+                android:textColor="@color/primary"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+        <!-- Spacer -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Bottom Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="24dp">
+
+            <TextView
+                android:id="@+id/btnCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="취소"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_main"
+                android:background="@drawable/bg_rounded_gray"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="12dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/btnDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="삭제"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_main"
+                android:background="@drawable/bg_rounded_primary"
+                android:backgroundTint="@color/color_delete"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="12dp"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="저장"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_main"
+                android:background="@drawable/bg_rounded_primary"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="12dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

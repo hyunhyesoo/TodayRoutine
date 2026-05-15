@@ -2,18 +2,18 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="primary">#FFCA28</color>      <!-- Deep Pastel Yellow -->
-    <color name="primary_dark">#FFB300</color>
-    <color name="color_accent">#4FC3F7</color> <!-- Sky Blue -->
-    <color name="bg_light">#FFFDE7</color>     <!-- Light Yellow Background -->
-    <color name="bg_blue">#E1F5FE</color>      <!-- Light Blue Background -->
-    <color name="text_main">#4E342E</color>    <!-- Brownish text for yellow bg -->
-    <color name="text_sub">#8D6E63</color>
+    <color name="primary">#98D8AA</color>      <!-- Clear Minty Green -->
+    <color name="primary_dark">#76C893</color>
+    <color name="color_accent">#FFE082</color> <!-- Soft Pastel Yellow -->
+    <color name="bg_light">#FFFFFF</color>     <!-- Plain White Background -->
+    <color name="bg_blue">#E8F5E9</color>      <!-- Very soft green tint -->
+    <color name="text_main">#455A64</color>    <!-- Soft Blue-Gray -->
+    <color name="text_sub">#90A4AE</color>
     <color name="card_bg">#FFFFFF</color>
-    <color name="checkbox_checked">#FFCA28</color>
-    <color name="checkbox_unchecked">#FFF59D</color>
-    <color name="gray_light">#FFF9C4</color>   <!-- Soft Yellow Gray -->
+    <color name="checkbox_checked">#98D8AA</color>
+    <color name="checkbox_unchecked">#E8F5E9</color>
+    <color name="gray_light">#FFF8E1</color>   <!-- Very soft yellow -->
     <color name="gray_transparent">#33000000</color>
-    <color name="color_delete">#FF6B6B</color>
+    <color name="color_delete">#EF9A9A</color> <!-- Soft pastel red -->
     <color name="dialog_bg">#FFFFFF</color>
 </resources>

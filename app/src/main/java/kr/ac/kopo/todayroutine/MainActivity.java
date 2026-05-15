@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.CalendarView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,14 +33,14 @@ public class MainActivity extends AppCompatActivity {
     // Bottom Sheet Statistics Views
     private TextView tvCurrentMonth, btnPrevMonth, btnNextMonth;
     private CalendarView calendarView;
-    private CircularProgressView circularProgress;
+    private ProgressBar circularProgress;
     private TextView tvStatsTitle, tvOverallRate, tvBestCategory;
     private LinearLayout layoutCategoryRanking;
 
     private int currentYear;
     private int currentMonth; // 1-based
     private int currentDay;
-    private boolean isMonthlyView = true;
+    private boolean isMonthlyView = false; // Start with Daily View by default
     private boolean isProgrammaticChange = false;
 
     @Override
@@ -143,10 +144,10 @@ public class MainActivity extends AppCompatActivity {
 
         MonthlyStats stats = DataManager.getInstance().getMonthlyStats(currentYear, currentMonth);
 
-        // Circular progress
+        // Overall display
         int rate = stats.getOverallRate();
         circularProgress.setProgress(rate);
-        tvOverallRate.setText(rate + "%");
+        tvOverallRate.setText("완료"); // Remove % from circle
 
         // Best category
         int bestCatId = stats.getBestCategoryId();
@@ -217,14 +218,15 @@ public class MainActivity extends AppCompatActivity {
             tvName.setText(catName);
             tvName.setTextSize(15);
             tvName.setTextColor(Color.parseColor("#2C3E50"));
-            LinearLayout.LayoutParams tvNameParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            LinearLayout.LayoutParams tvNameParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             tvNameParams.rightMargin = 20;
             tvName.setLayoutParams(tvNameParams);
 
             TextView tvRate = new TextView(this);
-            tvRate.setText(catRate + "%");
-            tvRate.setTextSize(15);
-            tvRate.setTextColor(Color.parseColor("#2C3E50"));
+            tvRate.setText("진행중"); // Instead of 85%
+            tvRate.setTextSize(14);
+            tvRate.setTextColor(Color.parseColor("#98D8AA"));
             tvRate.setTypeface(null, Typeface.BOLD);
 
             itemLayout.addView(tvName);
@@ -253,13 +255,10 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // Sort routines by rate descending
-        List<Map.Entry<Integer, Integer>> sortedEntries = new ArrayList<>(routineRates.entrySet());
-        Collections.sort(sortedEntries, (a, b) -> b.getValue() - a.getValue());
-
         // Display in 2 columns
+        List<Map.Entry<Integer, Integer>> entries = new ArrayList<>(routineRates.entrySet());
         LinearLayout currentRow = null;
-        for (int i = 0; i < sortedEntries.size(); i++) {
+        for (int i = 0; i < entries.size(); i++) {
             if (i % 2 == 0) {
                 currentRow = new LinearLayout(this);
                 currentRow.setOrientation(LinearLayout.HORIZONTAL);
@@ -269,14 +268,15 @@ public class MainActivity extends AppCompatActivity {
                 layoutCategoryRanking.addView(currentRow);
             }
 
-            Map.Entry<Integer, Integer> entry = sortedEntries.get(i);
+            Map.Entry<Integer, Integer> entry = entries.get(i);
             int routineId = entry.getKey();
             int routineRate = entry.getValue();
             String routineName = getRoutineName(routineId);
 
             LinearLayout itemLayout = new LinearLayout(this);
             itemLayout.setOrientation(LinearLayout.HORIZONTAL);
-            LinearLayout.LayoutParams itemParams = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
+            LinearLayout.LayoutParams itemParams = new LinearLayout.LayoutParams(0,
+                    LinearLayout.LayoutParams.WRAP_CONTENT, 1);
             itemParams.setMargins(0, 12, 12, 12);
             itemLayout.setLayoutParams(itemParams);
             itemLayout.setGravity(Gravity.CENTER_VERTICAL);
@@ -285,23 +285,28 @@ public class MainActivity extends AppCompatActivity {
             tvName.setText(routineName);
             tvName.setTextSize(14);
             tvName.setTextColor(Color.parseColor("#2C3E50"));
-            LinearLayout.LayoutParams tvNameParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            LinearLayout.LayoutParams tvNameParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             tvNameParams.rightMargin = 20;
             tvName.setLayoutParams(tvNameParams);
 
-            TextView tvRate = new TextView(this);
-            tvRate.setText(routineRate + "%");
-            tvRate.setTextSize(14);
-            tvRate.setTextColor(Color.parseColor("#2C3E50"));
-            tvRate.setTypeface(null, Typeface.BOLD);
+            TextView tvStatus = new TextView(this);
+            if (routineRate >= 100) {
+                tvStatus.setText("성공!");
+                tvStatus.setTextColor(Color.parseColor("#98D8AA")); // Our point green
+                tvStatus.setTypeface(null, Typeface.BOLD);
+            } else {
+                tvStatus.setText(""); // Show nothing if not completed
+            }
+            tvStatus.setTextSize(13);
 
             itemLayout.addView(tvName);
-            itemLayout.addView(tvRate);
+            itemLayout.addView(tvStatus);
             currentRow.addView(itemLayout);
         }
 
         // Add spacer if odd number of items
-        if (sortedEntries.size() % 2 != 0 && currentRow != null) {
+        if (entries.size() % 2 != 0 && currentRow != null) {
             android.view.View spacer = new android.view.View(this);
             spacer.setLayoutParams(new LinearLayout.LayoutParams(0, 0, 1));
             currentRow.addView(spacer);

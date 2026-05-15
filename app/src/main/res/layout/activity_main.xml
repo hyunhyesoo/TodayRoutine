@@ -138,10 +138,14 @@
                         android:layout_height="180dp"
                         android:layout_gravity="center">
 
-                        <kr.ac.kopo.todayroutine.CircularProgressView
+                        <ProgressBar
                             android:id="@+id/circularProgress"
+                            style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
+                            android:layout_height="match_parent"
+                            android:max="100"
+                            android:progress="0"
+                            android:progressDrawable="@drawable/bg_circular_progress" />
 
                         <TextView
                             android:id="@+id/tvOverallRate"

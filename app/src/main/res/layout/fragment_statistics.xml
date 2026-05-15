@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_light"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="120dp">
+
+        <!-- Month Navigation Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="#C0C0C0"
+            android:paddingVertical="16dp"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/btnPrevMonth"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="&lt;"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/tvCurrentMonth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="5월"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/btnNextMonth"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="&gt;"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <!-- CalendarView -->
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/card_bg" />
+
+        <!-- Statistics Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/bg_blue">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="24dp">
+
+                <!-- Title -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="이 달의 평균 달성률"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_main"
+                    android:layout_marginBottom="24dp" />
+
+                <!-- Circular Progress -->
+                <FrameLayout
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:layout_gravity="center">
+
+                    <ProgressBar
+                        android:id="@+id/circularProgress"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressDrawable="@drawable/bg_circular_progress" />
+
+                    <TextView
+                        android:id="@+id/tvOverallRate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="87%"
+                        android:textSize="36sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_main" />
+                </FrameLayout>
+
+                <!-- Best Category -->
+                <TextView
+                    android:id="@+id/tvBestCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="가장 열심히 한 카테고리: 건강"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#D32F2F"
+                    android:gravity="center" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Category Ranking List -->
+        <LinearLayout
+            android:id="@+id/layoutCategoryRanking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="16dp" />
+
+    </LinearLayout>
+</ScrollView>

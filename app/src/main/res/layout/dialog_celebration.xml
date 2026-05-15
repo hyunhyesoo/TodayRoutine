@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    android:layout_gravity="center"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="8dp"
+    app:cardBackgroundColor="@color/card_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🎉"
+            android:textSize="64sp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100% 달성!"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="오늘의 모든 루틴을\n완벽하게 끝냈어요!\n정말 고생 많으셨습니다."
+            android:textSize="16sp"
+            android:textColor="@color/text_main"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
