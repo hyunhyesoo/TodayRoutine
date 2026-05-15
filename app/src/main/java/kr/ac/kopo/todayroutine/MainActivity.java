@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
         // Overall display
         int rate = stats.getOverallRate();
         circularProgress.setProgress(rate);
-        tvOverallRate.setText("완료"); // Remove % from circle
+        tvOverallRate.setText(rate + "%");
 
         // Best category
         int bestCatId = stats.getBestCategoryId();
@@ -224,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
             tvName.setLayoutParams(tvNameParams);
 
             TextView tvRate = new TextView(this);
-            tvRate.setText("진행중"); // Instead of 85%
+            tvRate.setText(catRate + "%");
             tvRate.setTextSize(14);
             tvRate.setTextColor(Color.parseColor("#98D8AA"));
             tvRate.setTypeface(null, Typeface.BOLD);
